@@ -4,45 +4,21 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class GalvenaKlase {
+	
+	static int studSk, kritSk;
+	static Scanner scan = new Scanner(System.in);
+	static DecimalFormat df = new DecimalFormat("0.#");
+	static String[] studenti = new String[studSk];
+	static String[] kriteriji = new String[kritSk];
+	static int[] kriterijaSvars = new int[kritSk];
+	static int[][] kriterijaVertejums = new int[studSk][kritSk];
+	static double[] semestraVertejums = new double[studSk];
+	
 	public static void main(String[] args) {
-		int studSk, kritSk;
-		Scanner scan = new Scanner(System.in);
-		DecimalFormat df = new DecimalFormat("0.#");
 		
-		// Audzēkņu skaita ievade
-		do {
-			System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
-			while(!scan.hasNextInt()) {
-				System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
-				scan.next();
-			}
-			studSk = scan.nextInt();
-		}while(studSk<1);
-		String[] studenti = new String[studSk];
 		
-		// Vērtēšanas kritēriju skaita ievade
-		do {
-			System.out.println("Kāds būs kritēriju skaits?");
-			while(!scan.hasNextInt()) {
-				System.out.println("Kāds būs kritēriju skaits?");
-				scan.next();
-			}
-			kritSk = scan.nextInt();
-		}while(kritSk<1);
-		String[] kriteriji = new String[kritSk];
-		int[] kriterijaSvars = new int[kritSk];
-		int[][] kriterijaVertejums = new int[studSk][kritSk];
-		double[] semestraVertejums = new double[studSk];
+		Metode1();
 		
-		scan.nextLine();
-		
-		// Ievada audzēkņu vārdus, uzvārdus
-		for(int i=0; i<studenti.length; i++) {
-			do {
-				System.out.println("Ievadi "+(i+1)+". studentu");
-				studenti[i] = scan.nextLine().trim();
-			} while(!studenti[i].matches("^[\\p{L} ]+$"));
-		}
 		
 		// Definē kritērijus
 		int maxSvars = 100, sk = 1;
@@ -108,4 +84,39 @@ public class GalvenaKlase {
 		}
 		scan.close();
 	}
+	
+	static void Metode1() {
+		// Audzēkņu skaita ievade
+		do {
+			System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
+			while(!scan.hasNextInt()) {
+				System.out.println("Cik studentiem aprēķināsi gala vērtējumu?");
+				scan.next();
+			}
+			studSk = scan.nextInt();
+		}while(studSk<1);
+		
+		
+		// Vērtēšanas kritēriju skaita ievade
+		do {
+			System.out.println("Kāds būs kritēriju skaits?");
+			while(!scan.hasNextInt()) {
+				System.out.println("Kāds būs kritēriju skaits?");
+				scan.next();
+			}
+			kritSk = scan.nextInt();
+		}while(kritSk<1);
+		
+		
+		scan.nextLine();
+		
+		// Ievada audzēkņu vārdus, uzvārdus
+		for(int i=0; i<studenti.length; i++) {
+			do {
+				System.out.println("Ievadi "+(i+1)+". studentu");
+				studenti[i] = scan.nextLine().trim();
+			} while(!studenti[i].matches("^[\\p{L} ]+$"));
+		}
+		}
+	
 }
