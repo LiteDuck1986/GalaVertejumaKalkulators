@@ -19,6 +19,9 @@ public class GalvenaKlase {
 		
 		Metode1();
 		
+		System.out.println("Auf wiedersehen!");
+		System.out.println("Padevos.");
+		
 		
 		// Definē kritērijus
 		int maxSvars = 100, sk = 1;
