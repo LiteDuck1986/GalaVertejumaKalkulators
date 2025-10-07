@@ -59,7 +59,7 @@ public class GalvenaKlase {
 				break;
 				
 			case "Ievadīt vērtējumus":
-				if(studentsEksiste == false || kriterijiEksiste == false || kritSvariEksiste == false || vertejumiEksiste == false) {
+				if(studentsEksiste == false || kriterijiEksiste == false || kritSvariEksiste == false) {
 					JOptionPane.showMessageDialog(null, "Vispirms ievadi studentus, kritērijus, kritērijas svarus un vērtējumus!", "Bridinajums",
 							JOptionPane.WARNING_MESSAGE);
 					break;
