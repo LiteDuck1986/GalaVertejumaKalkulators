@@ -15,4 +15,10 @@ Java programmēšanas valodā izstrādātā programmatūras projekta sākotnēj�
 	- [x] Labot iegūto vērtējumu
 	- [x] Aprēķināt gala vērtējumu
 	- [x] Saglabāt rezultātus failā
+<<<<<<< HEAD
 	- [x] Nolasīt rezultātus no faila
+=======
+	- [x] Nolasīt rezultātus no faila
+	
+	### Programma uzlabota!
+>>>>>>> 2964a9a09b37658f8cf8e5c3c58250ba42b5abf6
