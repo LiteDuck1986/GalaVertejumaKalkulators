@@ -20,6 +20,10 @@ public class GalvenaKlase {
 	
 	public static void main(String[] args) {
 		
+		//Pārbaudes
+		boolean studentsEksiste = false, kriterijiEksiste = false, kritSvariEksiste = false,
+				vertejumiEksiste = false, galaVertEksiste = false;
+		
 		String izvele;
 		String[] darbibuSaraksts = { "Ievadīt audzēkni", "Ievadīt kritērijus","Ievadīt kritērijas svaru", "Ievadīt vērtējumus", "Labot Kritērijus",
 				"Labot kritērijas svaru", "Labot iegūto vērtējumu", "Aprēķināt gala vērtējumu", "Saglabāt failā", "Apskatīt failu",
@@ -34,38 +38,80 @@ public class GalvenaKlase {
 
 			switch (izvele) {
 			case "Ievadīt audzēkni":
+				//Tiek izsaukta IevaditAudz metode un pārbaude pārvēršas par true.
 				IevaditAudz();
+				studentsEksiste = true;
 				break;
 				
 			case "Ievadīt kritērijus":
 				IevaditKrit();
+				kriterijiEksiste = true;
 				break;
 				
 			case "Ievadīt kritērijas svaru":
+				if(kriterijiEksiste == false) {
+					JOptionPane.showMessageDialog(null, "Vispirms izveido kritērijus!", "Bridinajums",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+				}else
 				IevaditKritSvaru();
+				kritSvariEksiste = true;
 				break;
 				
 			case "Ievadīt vērtējumus":
+				if(studentsEksiste == false || kriterijiEksiste == false || kritSvariEksiste == false || vertejumiEksiste == false) {
+					JOptionPane.showMessageDialog(null, "Vispirms ievadi studentus, kritērijus, kritērijas svarus un vērtējumus!", "Bridinajums",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+				}else
 				IevadiVertejumi();
+				vertejumiEksiste = true;
 				break;
 				
 			case "Labot Kritērijus":
-//				to do;
+				if(kriterijiEksiste == false) {
+					JOptionPane.showMessageDialog(null, "Vispirms izveido kritērijus!", "Bridinajums",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+				}else
+				IevaditKrit();
 				break;
 				
-			case "Labot Kritērijas svaru":
-//				to do;
+			case "Labot kritērijas svaru":
+				if(kritSvariEksiste == false) {
+					JOptionPane.showMessageDialog(null, "Vispirms izveido kritērijas svarus!", "Bridinajums",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+				}else if(kritSvariEksiste == true)
+				IevaditKritSvaru();
 				break;
 				
 			case "Labot iegūto vērtējumu":
-//				to do;
+				if(studentsEksiste == false || kriterijiEksiste == false || kritSvariEksiste == false || vertejumiEksiste == false) {
+					JOptionPane.showMessageDialog(null, "Vispirms ievadi studentus, kritērijus, kritērijas svarus un vērtējumus!", "Bridinajums",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+				}else
+				IevadiVertejumi();
 				break;
 				
 			case "Aprēķināt gala vērtējumu":
+				if(studentsEksiste == false || kriterijiEksiste == false || kritSvariEksiste == false || vertejumiEksiste == false) {
+					JOptionPane.showMessageDialog(null, "Pirms aprēķini gala vērtējumus ievadi studentus,"
+							+ " kritērijus, kritērijas svarus un vērtējumus!", "Bridinajums",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+				}else
 				AprekinatGalaVert();
+				galaVertEksiste = true;
 				break;
 
 			case "Saglabāt failā":
+				if(galaVertEksiste == false) {
+					JOptionPane.showMessageDialog(null, "Nav ko saglabāt!", "Bridinajums",
+							JOptionPane.WARNING_MESSAGE);
+				break;
+			}else
 				DarbibasArFailiem.saglabat(teksts);
 				break;
 
